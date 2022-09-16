@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.10/vue.min.js"
+        integrity="sha512-H8u5mlZT1FD7MRlnUsODppkKyk+VEiCmncej8yZW1k/wUT90OQon0F9DSf/2Qh+7L/5UHd+xTLrMszjHEZc2BA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>VUE-BOOLZAPP</title>
+</head>
+
+ <body>
+
+<!-- WEB-APP -->
+    <div class="container">
+        <div id="webApp" class="web-app">
+
+            <!-- PART LEFT -->
+            <aside>
+                <div class="head flex">
+                    <div class="profile flex">
+                        <img src="img/avatar_io.jpg" alt="avatar_1">
+                        <span>Sofia</span>
+                    </div>
+                    <div class="icon">
+                        <span><i class="fa-solid fa-circle-notch"></i></span>
+                        <span><i class="fa-solid fa-message"></i></span>
+                        <span><i class="fa-solid fa-ellipsis-vertical"></i></span>
+                    </div> 
+                </div>
+                <div class="notifications flex">
+                    <div class="bell">
+                        <i class="fa-solid fa-bell-slash"></i>
+                    </div>
+                    <div class="attivation-notifications">
+                        <p>Ricevi notifiche di nuovi messaggi</p>
+                        <p><a href="#">Attiva notifiche desktop</a></p>
+                    </div>
+                </div>
+                <div class="search">
+                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+                </div>
+                <div class="contact">
+                    <ul>
+                        <li class="list-contact" v-for="(contact , i) in contacts">
+                         <div class="flex space-between">
+                            <div class="card flex">
+                                <img :src="contacts[i].avatar" alt="contacts[i].avatar">
+                                <div>
+                                <p>{{contacts[i].name}}</p>
+                                <p>Ultimo messaggio inviato</p></div>
+                            </div>
+                            <div>
+                                <p>12:00</p>
+                            </div>
+                         </div>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- PART RIGHT -->
+            <main>
+                <header class="flex space-between">
+                    <div></div>
+                    <div class="head-icon">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-paperclip"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </header>
+                <div class="content">
+                    <ul>
+                        <li v-for="(message , i) in contacts[activeProfile].messages">
+                            <div>
+                               {{message.message}}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <footer class="flex space-between">
+                    <div>
+                        <i class="fa-regular fa-face-smile"></i>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Scrivi un messaggio">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-microphone"></i>
+                    </div>
+                </footer>
+            </main>
+        </div>
+    </div>
+
+ </body>
+</html>
