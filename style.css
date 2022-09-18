@@ -69,10 +69,15 @@ aside {
     align-self: center;
 }
 
+
 .contact img{
     width: 15%;
     border-radius: 25px;
-    padding: 5px;
+    padding: 5px 5px;
+}
+
+.active{
+    background-color: #a9a9a9;
 }
 
 .head {
