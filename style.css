@@ -27,6 +27,11 @@ img {
     flex-direction: column;
 }
 
+li{
+    list-style-type: none;
+}
+
+
 /* BODY */
 
 body {
