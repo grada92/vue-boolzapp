@@ -46,31 +46,52 @@
                 </div>
                 <div class="search">
                     <span><i class="fa-solid fa-magnifying-glass"></i></span>
-                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+                    <input 
+                    type="text" 
+                    placeholder="Cerca o inizia una nuova chat"
+                    v-model="research"
+                    @keyUp="insertName()"
+                    >
+                   
                 </div>
                 <div class="contact">
                     <ul>
-                        <li class="list-contact" v-for="(contact , i) in contacts">
+                        <li 
+                        class="list-contact" 
+                        v-for="(contact , i) in contacts"
+                        :class="{active : i === activeProfile}"
+                        @click="setActiveIndex(i)"
+                        v-if="contact.visible"
+                        >
                          <div class="flex space-between">
                             <div class="card flex">
                                 <img :src="contacts[i].avatar" alt="contacts[i].avatar">
                                 <div>
                                 <p>{{contacts[i].name}}</p>
-                                <p>Ultimo messaggio inviato</p></div>
+                                <p>{{contacts[i].messages[contacts[i].messages.length - 1].message}}</p></div>
                             </div>
                             <div>
-                                <p>12:00</p>
+                                <p>{{contacts[i].messages[contacts[i].messages.length - 1].date}}</p>
                             </div>
                          </div>
                         </li>
                     </ul>
+                    
                 </div>
             </aside>
 
             <!-- PART RIGHT -->
             <main>
                 <header class="flex space-between">
-                    <div></div>
+                    <div class="contact">
+                        <div class="flex align-items">
+                        <img 
+                        class="contact"
+                        :src="contacts[activeProfile].avatar"
+                        :alt="contacts[activeProfile].name">
+                        <p>{{contacts[activeProfile].name}}</p>
+                        </div>
+                    </div>
                     <div class="head-icon">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <i class="fa-solid fa-paperclip"></i>
@@ -78,8 +99,9 @@
                     </div>
                 </header>
                 <div class="content">
-                    <ul>
-                        <li v-for="(message , i) in contacts[activeProfile].messages">
+                    <ul class="flex column">
+                        <li v-for="(message , i) in contacts[activeProfile].messages"
+                        :class="(message.status == 'received') ? 'textwhite' : 'textgreen'">
                             <div>
                                {{message.message}}
                             </div>
@@ -90,9 +112,12 @@
                     <div>
                         <i class="fa-regular fa-face-smile"></i>
                     </div>
-                    <div>
-                        <input type="text" placeholder="Scrivi un messaggio">
-                    </div>
+                        <input 
+                        type="text" 
+                        v-model="newText"
+                        placeholder="Scrivi un messaggio"
+                        @keyup.enter="addNewText()"
+                        >
                     <div>
                         <i class="fa-solid fa-microphone"></i>
                     </div>
