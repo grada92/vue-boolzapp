@@ -74,7 +74,9 @@ aside {
     align-self: center;
 }
 
-
+.paddingleft {
+    padding-left: 50px;
+}
 .contact img{
     width: 14%;
     border-radius: 100px;
