@@ -63,14 +63,14 @@
                         @click="setActiveIndex(i)"
                         v-if="contact.visible"
                         >
-                         <div class="flex space-between align">
+                         <div class="flex space-between align"> <!--align center text message-->
                             <div class="card flex">
                                 <img :src="contacts[i].avatar" alt="contacts[i].avatar">
                                 <div>
                                 <p>{{contacts[i].name}}</p>
                                 <p>{{contacts[i].messages[contacts[i].messages.length - 1].message}}</p></div>
                             </div>
-                            <div>
+                            <div> 
                                 <p class="paddingleft" >{{contacts[i].messages[contacts[i].messages.length - 1].date}}</p>
                             </div>
                          </div>
