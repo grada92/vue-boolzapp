@@ -168,7 +168,7 @@ header {
 .content {
     flex-grow: 1;
     overflow-y: auto;
-    background-image: url(../img/mine.jpg);
+    background-image: url(./img/mine.jpg);
 }
 
 footer {
