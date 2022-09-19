@@ -165,6 +165,10 @@ header {
     flex-shrink: 0;
 }
 
+.align {
+    align-items: center;
+}
+
 .content {
     flex-grow: 1;
     overflow-y: auto;
